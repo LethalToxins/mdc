@@ -13,6 +13,11 @@
 ;	lea	(a0,d0.w),a1
 ;	lea	(source).l,a2
 ;	lea	(buffer).w,a3
+;.loop:
+;       bsr.w   Decompress_Chunk
+;       tst.w   d0
+;       bmi.s   .loop
+;       movea.l	(sp)+,a2
 
 ; See http://www.segaretro.org/Enigma_compression for format description
 ; ---------------------------------------------------------------------------

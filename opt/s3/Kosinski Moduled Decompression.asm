@@ -180,8 +180,8 @@ Set_Kos_Bookmark:
 
 Process_Kos_Queue:
 		tst.w	(Kos_decomp_queue_count).w
-		beq.w	Process_Kos_Queue_Done
-		bmi.w	Restore_Kos_Bookmark	; branch if a decompression was interrupted by V-int
+		beq.s	Process_Kos_Queue_Done ; changed from word to s, making it slightly faster.
+		bmi.s	Restore_Kos_Bookmark	; branch if a decompression was interrupted by V-int | changed from word to s, making it slightly faster.
 
 Process_Kos_Queue_Main:
 		ori.w	#$8000,(Kos_decomp_queue_count).w	; set sign bit to signify decompression in progress
